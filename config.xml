@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JWAS>
+	<web> <!-- (REQUIRED) -->
+		<type>http</type> <!-- Web server type ie. HTTP or HTTPS (REQUIRED if defaultSettings=false) -->
+		<port>8080</port> <!-- Port number used to host the web server. (Default for http: 80) (Default for https: 443) (REQUIRED if defaultSettings=false) -->
+		<keyfile>curDir\keys\identity.jks</keyfile> <!-- HTTPS certificate file location. (REQUIRED if type=https) -->
+		<password1>password1</password1> <!-- First key store password. (REQUIRED if type=https) -->
+		<password2>password2</password2> <!-- Second key store password. (REQUIRED if type=https) -->
+		<createFolders>true</createFolders> <!-- Create non existing folders for all paths in this config file. (NOT required - default=false) -->
+		<defaultSettings>false</defaultSettings> <!-- Defaults: type=http, port=80, createFolders=true (NOT required - default=false) -->
+	</web>
+	<log> <!-- (REQUIRED) -->
+		<path>curDir\logs</path> <!-- Location log files are saved to. (REQUIRED if defaultSettings=false) -->
+		<dateFormat>yyyy-MM-dd HH.mm.ss</dateFormat> <!-- Date format for log file names. (REQUIRED if defaultSettings=false) -->
+		<logLevel>123</logLevel> <!-- Used for logging only certain types of events. (NOT required - default=123) (1-LOG, 2-WARNING, 3-ERROR) -->
+		<defaultSettings>false</defaultSettings> <!-- Defaults: path=curdir\logs, dateFormat="yyyy-MM-dd HH.mm.ss", logLevel=123 (NOT required - default=false) -->
+	</log>
+	<recourse> <!-- (REQUIRED) -->
+		<path>curDir\Resources</path> <!-- Location of web resources (html, css, js). (REQUIRED - What is the point of hosting a web server with no resources?) -->
+	</recourse>
+	<database> <!-- (Not required) -->
+		<ip>localhost</ip> <!-- Address of database server. (NOT required - No defaults) -->
+		<port>3306</port> <!-- Port to access database server. (NOT required - No defaults) -->
+		<dbName>dbCoffeeSpider</dbName> <!-- Name of the database to use on the server. (NOT required - No defaults) -->
+	</database>
+</JWAS>
