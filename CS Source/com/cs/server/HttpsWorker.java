@@ -14,8 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Callable;
 
-import org.apache.commons.io.FilenameUtils;
-
 import com.cs.http.BasicHttpRequest;
 import com.cs.http.BasicHttpResponse;
 import com.cs.http.Http;
@@ -293,7 +291,7 @@ public class HttpsWorker implements Callable<Void>
 					response.setEntity( fileContent );
 
 					// guess and set the content type
-					String extention = FilenameUtils.getExtension( f.getPath() );
+					String extention = getExtension( f.getPath() );
 					String httpContentType = Http.getContentType( extention );
 					response.getHeaders().put( Http.CONTENT_TYPE, httpContentType );
 				}
@@ -372,7 +370,7 @@ public class HttpsWorker implements Callable<Void>
 					response.setEntity( fileContent );
 
 					// guess and set the content type
-					String extention = FilenameUtils.getExtension( f.getPath() );
+					String extention = getExtension( f.getPath() );
 					String httpContentType = Http.getContentType( extention );
 					response.getHeaders().put( Http.CONTENT_TYPE, httpContentType );
 				}
@@ -421,5 +419,13 @@ public class HttpsWorker implements Callable<Void>
 		responses.setStatusCode( HttpStatusCode.OK );
 		
 		return responses;
+	}
+	
+	protected String getExtension( String fName )
+	{
+		int extStart = fName.lastIndexOf( "." ) + 1;
+		String fileExtention = fName.substring( extStart );
+		
+		return fileExtention;
 	}
 }
